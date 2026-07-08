@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veez — Posicionamento Digital para Profissionais Liberais</title>
+  <meta name="description" content="A Veez transforma a autoridade real de profissionais liberais em presença digital que gera crescimento previsível. Estratégia antes de qualquer post." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Tokens ──────────────────────────────── */
+    :root {
+      --pink:    #E91E8C;
+      --pink-d:  #c41578;
+      --purple:  #5551C8;
+      --lime:    #B8D200;
+      --black:   #0F0F0F;
+      --gray-1:  #F7F7F7;
+      --gray-2:  #EFEFEF;
+      --gray-3:  #D0D0D0;
+      --gray-4:  #888888;
+      --white:   #FFFFFF;
+      --text:    #1A1A1A;
+    }
+
+    /* ─── Reset ───────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ─── Container ───────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Buttons ─────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+      letter-spacing: 0.2px;
+    }
+
+    .btn-pink {
+      background: var(--pink);
+      color: var(--white);
+    }
+
+    .btn-pink:hover {
+      background: var(--pink-d);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(233,30,140,.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.3);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn-lg {
+      padding: 17px 36px;
+      font-size: 15px;
+    }
+
+    /* ─── Section labels ──────────────────────── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    /* ─── Fade-in animations ──────────────────── */
+    .animate {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .animate.delay-1 { transition-delay: .1s; }
+    .animate.delay-2 { transition-delay: .2s; }
+    .animate.delay-3 { transition-delay: .3s; }
+    .animate.delay-4 { transition-delay: .4s; }
+    .animate.delay-5 { transition-delay: .5s; }
+
+    .animate.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ════════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: background .3s, border-color .3s, padding .3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(10px);
+      border-bottom-color: var(--gray-2);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      transition: color .3s;
+    }
+
+    #navbar.scrolled .nav-logo { color: var(--black); }
+    .nav-logo .dot { color: var(--pink); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,.75);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    #navbar.scrolled .nav-links a { color: var(--gray-4); }
+    #navbar.scrolled .nav-links a:hover { color: var(--black); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* ════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════ */
+    #hero {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(233,30,140,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(85,81,200,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-label {
+      color: var(--pink);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--pink);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,.55);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 36px;
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .hero-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--pink);
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .hero-stat-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .hero-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .hero-stat-icon {
+      width: 36px; height: 36px;
+      background: rgba(233,30,140,.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .hero-stat-text {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,.65);
+      line-height: 1.6;
+    }
+
+    .hero-stat-text strong {
+      color: var(--white);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ════════════════════════════════════════════
+       STRIP / TRUST BAR
+    ════════════════════════════════════════════ */
+    .trust-strip {
+      background: var(--pink);
+      padding: 18px 0;
+      overflow: hidden;
+    }
+
+    .trust-strip-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .trust-item {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .trust-item::after {
+      content: '✦';
+      font-size: 10px;
+      opacity: .6;
+    }
+
+    /* ════════════════════════════════════════════
+       SHARED SECTION STYLES
+    ════════════════════════════════════════════ */
+    .section-light { background: var(--white); padding: 100px 0; }
+    .section-gray  { background: var(--gray-1); padding: 100px 0; }
+    .section-dark  { background: var(--black); padding: 100px 0; }
+
+    .section-header {
+      margin-bottom: 64px;
+    }
+
+    .section-header.centered {
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--pink);
+    }
+
+    .section-sub {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--gray-4);
+    }
+
+    /* ════════════════════════════════════════════
+       QUEM SOMOS
+    ════════════════════════════════════════════ */
+    #quem-somos .inner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text .section-label { color: var(--purple); }
+
+    .about-body {
+      font-size: 16px;
+      line-height: 1.82;
+      color: var(--gray-4);
+    }
+
+    .about-body p + p { margin-top: 18px; }
+
+    .about-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about-card {
+      background: var(--gray-1);
+      border: 1px solid var(--gray-2);
+      border-radius: 12px;
+      padding: 24px;
+      border-left: 3px solid var(--pink);
+    }
+
+    .about-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .about-card-text {
+      font-size: 13px;
+      color: var(--gray-4);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════════
+       O QUE FAZEMOS
+    ════════════════════════════════════════════ */
+    #servicos { background: var(--black); }
+
+    #servicos .section-label { color: var(--lime); }
+    #servicos .section-title { color: var(--white); }
+    #servicos .section-sub { color: rgba(255,255,255,.45); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 30px 26px;
+      transition: border-color .2s, background .2s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(233,30,140,.35);
+      background: rgba(233,30,140,.04);
+    }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      background: rgba(233,30,140,.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    .service-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+      line-height: 1.65;
+    }
+
+    /* ════════════════════════════════════════════
+       PARA QUEM É
+    ════════════════════════════════════════════ */
+    #para-quem .section-label { color: var(--purple); }
+
+    .for-who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .for-who-left {}
+
+    .for-who-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .for-who-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .for-who-check {
+      width: 22px; height: 22px;
+      background: var(--pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 11px;
+      color: var(--white);
+    }
+
+    .for-who-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .for-who-text strong {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .profile-card {
+      background: var(--gray-1);
+      border: 1px solid var(--gray-2);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .profile-card-header {
+      background: var(--black);
+      padding: 28px;
+    }
+
+    .profile-card-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 8px;
+    }
+
+    .profile-card-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+
+    .profile-card-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .profile-pain {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .profile-pain-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--pink);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .profile-pain-text {
+      font-size: 14px;
+      color: var(--gray-4);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ════════════════════════════════════════════
+       PROCESSO
+    ════════════════════════════════════════════ */
+    #processo { background: var(--gray-1); }
+    #processo .section-label { color: var(--pink); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      right: -8px;
+      width: 16px;
+      height: 1px;
+      background: var(--gray-3);
+    }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--pink);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 12.5px;
+      color: var(--gray-4);
+      line-height: 1.65;
+    }
+
+    .step-dot {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--gray-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    /* ════════════════════════════════════════════
+       PACOTES
+    ════════════════════════════════════════════ */
+    #pacotes .section-label { color: var(--pink); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pkg-card {
+      border: 1.5px solid var(--gray-2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+      background: var(--white);
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.08);
+    }
+
+    .pkg-card.featured {
+      border-color: var(--pink);
+      box-shadow: 0 8px 32px rgba(233,30,140,.15);
+    }
+
+    .pkg-top {
+      padding: 30px 28px 24px;
+      border-bottom: 1px solid var(--gray-2);
+    }
+
+    .pkg-card.featured .pkg-top {
+      background: var(--black);
+      border-bottom-color: rgba(255,255,255,.1);
+    }
+
+    .pkg-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--gray-1);
+      color: var(--gray-4);
+      margin-bottom: 16px;
+      border: 1px solid var(--gray-2);
+    }
+
+    .pkg-card.featured .pkg-badge {
+      background: rgba(233,30,140,.15);
+      color: var(--pink);
+      border-color: rgba(233,30,140,.25);
+    }
+
+    .pkg-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .pkg-card.featured .pkg-name { color: var(--white); }
+
+    .pkg-price {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+
+    .pkg-card.featured .pkg-price { color: var(--pink); }
+
+    .pkg-period {
+      font-size: 13px;
+      color: var(--gray-4);
+      margin-top: 4px;
+    }
+
+    .pkg-card.featured .pkg-period { color: rgba(255,255,255,.4); }
+
+    .pkg-body {
+      padding: 28px;
+    }
+
+    .pkg-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .pkg-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .pkg-feature-dot {
+      width: 18px; height: 18px;
+      background: rgba(233,30,140,.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--pink);
+      font-size: 10px;
+    }
+
+    .pkg-cta {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      border: 1.5px solid var(--gray-2);
+      background: var(--gray-1);
+      color: var(--text);
+    }
+
+    .pkg-cta:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+    }
+
+    .pkg-card.featured .pkg-cta {
+      background: var(--pink);
+      color: var(--white);
+      border-color: var(--pink);
+    }
+
+    .pkg-card.featured .pkg-cta:hover {
+      background: var(--pink-d);
+    }
+
+    .setup-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--gray-4);
+      line-height: 1.65;
+    }
+
+    .setup-note strong { color: var(--text); }
+
+    /* ════════════════════════════════════════════
+       FAQ
+    ════════════════════════════════════════════ */
+    #faq { background: var(--gray-1); }
+    #faq .section-label { color: var(--purple); }
+
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-2);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--gray-2); }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      text-align: left;
+    }
+
+    .faq-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--gray-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s, transform .3s;
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--pink);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 22px;
+      font-size: 14px;
+      color: var(--gray-4);
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* ════════════════════════════════════════════
+       CTA FINAL
+    ════════════════════════════════════════════ */
+    #contato {
+      background: var(--black);
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contato::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(233,30,140,.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-label { color: var(--pink); margin-bottom: 20px; }
+
+    .cta-title {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -2px;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .cta-title em {
+      font-style: normal;
+      color: var(--pink);
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,.45);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-note {
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+      margin-top: 24px;
+    }
+
+    /* ════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════ */
+    footer {
+      background: #080808;
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255,255,255,.3);
+      letter-spacing: -0.5px;
+    }
+
+    .footer-logo .dot { color: var(--pink); }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,.25);
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,.6); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.18);
+    }
+
+    /* ════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-right { display: none; }
+      .hero-title { font-size: 44px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .for-who-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      #quem-somos .inner-grid { grid-template-columns: 1fr; gap: 40px; }
+      .section-title { font-size: 34px; }
+      .cta-title { font-size: 38px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .section-title { font-size: 30px; }
+      .hero-title { font-size: 36px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-step::after { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .cta-title { font-size: 30px; }
+    }
+
+    /* ─── WhatsApp Float ──────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .wa-tooltip {
+      background: var(--black);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 7px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: opacity .25s, transform .25s;
+      pointer-events: none;
+    }
+
+    .wa-float:hover .wa-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .wa-btn {
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      transition: transform .2s, box-shadow .2s;
+      flex-shrink: 0;
+    }
+
+    .wa-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,.55);
+    }
+
+    .wa-btn svg {
+      width: 28px; height: 28px;
+      fill: #ffffff;
+    }
+
+    @keyframes waPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.45); }
+      70%  { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    .wa-btn { animation: waPulse 2.4s infinite; }
+
+    @media (max-width: 640px) {
+      .wa-float { bottom: 20px; right: 20px; }
+      .wa-tooltip { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><span class="dot">·</span>veez</a>
+
+      <div class="nav-links">
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#servicos">O que fazemos</a>
+        <a href="#para-quem">Para quem é</a>
+        <a href="#pacotes">Pacotes</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="#contato" class="btn btn-pink">Quero começar →</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="section-label hero-label animate">Posicionamento Digital</div>
+        <h1 class="hero-title animate delay-1">
+          seu Instagram não precisa de mais posts.<br>
+          precisa de <em>estratégia.</em>
+        </h1>
+        <p class="hero-sub animate delay-2">
+          A Veez transforma a autoridade real de profissionais liberais em presença digital que gera crescimento previsível — com método, transparência e estratégia.
+        </p>
+        <div class="hero-ctas animate delay-3">
+          <a href="#contato" class="btn btn-pink btn-lg">Quero meu diagnóstico gratuito</a>
+          <a href="#quem-somos" class="btn btn-outline btn-lg">Saiba mais</a>
+        </div>
+      </div>
+
+      <div class="hero-right animate delay-2">
+        <div class="hero-card">
+          <div class="hero-card-title">O que você vai ter</div>
+          <div class="hero-stat-list">
+            <div class="hero-stat">
+              <div class="hero-stat-icon">🧠</div>
+              <div class="hero-stat-text">
+                <strong>Estratégia antes de qualquer post</strong>
+                Começamos pelo negócio — não pelo conteúdo.
+              </div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon">📊</div>
+              <div class="hero-stat-text">
+                <strong>Central de transparência no Notion</strong>
+                Você vê estratégia, calendário e métricas em tempo real.
+              </div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon">🎯</div>
+              <div class="hero-stat-text">
+                <strong>Especialização em profissionais liberais</strong>
+                Não atendemos qualquer empresa. Conhecemos o seu mercado.
+              </div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon">📈</div>
+              <div class="hero-stat-text">
+                <strong>Monitoramento ativo — não agendamento</strong>
+                O trabalho não termina na publicação.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TRUST STRIP
+════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <span class="trust-item">Médicas</span>
+    <span class="trust-item">Psicólogas</span>
+    <span class="trust-item">Nutricionistas</span>
+    <span class="trust-item">Advogadas</span>
+    <span class="trust-item">Fisioterapeutas</span>
+    <span class="trust-item">Dentistas</span>
+    <span class="trust-item">Médicas</span>
+    <span class="trust-item">Psicólogas</span>
+    <span class="trust-item">Nutricionistas</span>
+    <span class="trust-item">Advogadas</span>
+    <span class="trust-item">Fisioterapeutas</span>
+    <span class="trust-item">Dentistas</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     QUEM SOMOS
+════════════════════════════════════════════ -->
+<section id="quem-somos" class="section-light">
+  <div class="container">
+    <div class="inner-grid">
+      <div class="about-text animate">
+        <div class="section-label" style="color:var(--purple)">Quem somos</div>
+        <h2 class="section-title">não somos<br>uma agência <em>de posts.</em></h2>
+        <div class="about-body">
+          <p>A Veez é uma empresa de <strong>posicionamento estratégico digital</strong> especializada em profissionais liberais. Antes de criar qualquer conteúdo, a gente começa pelo negócio.</p>
+          <p>Porque postar sem estratégia é só barulho bem organizado. E você merece mais do que isso.</p>
+          <p>Nossa missão é traduzir a autoridade real de profissionais liberais em presença digital que gera crescimento previsível — com método, transparência e estratégia.</p>
+        </div>
+      </div>
+
+      <div class="about-right animate delay-2">
+        <div class="about-card">
+          <div class="about-card-title">Nossa missão</div>
+          <div class="about-card-text">Traduzir a autoridade real de profissionais liberais em presença digital que gera crescimento previsível — com método, transparência e estratégia.</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">Nossa promessa</div>
+          <div class="about-card-text">"Seu valor é real. Agora o mundo vai enxergar isso."</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">Nossa diferença</div>
+          <div class="about-card-text">Especialização exclusiva em profissionais liberais. Não atendemos qualquer empresa — e isso faz toda a diferença no resultado.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     O QUE FAZEMOS
+════════════════════════════════════════════ -->
+<section id="servicos" class="section-dark">
+  <div class="container">
+    <div class="section-header centered animate">
+      <div class="section-label" style="color:var(--lime)">O que fazemos</div>
+      <h2 class="section-title" style="color:var(--white)">tudo que seu Instagram<br>precisa para <em>trabalhar</em> por você.</h2>
+      <p class="section-sub">Um processo completo — do diagnóstico à publicação, com monitoramento ativo em cada etapa.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card animate delay-1">
+        <div class="service-icon">🧠</div>
+        <div class="service-name">Planejamento Estratégico</div>
+        <div class="service-desc">Diagnóstico completo, definição de persona, análise de mercado e estratégia personalizada para o seu negócio.</div>
+      </div>
+      <div class="service-card animate delay-2">
+        <div class="service-icon">✦</div>
+        <div class="service-name">Branding e Posicionamento</div>
+        <div class="service-desc">Identidade de marca, tom de voz e posicionamento definidos antes do primeiro post. Você não é igual a ninguém.</div>
+      </div>
+      <div class="service-card animate delay-3">
+        <div class="service-icon">📅</div>
+        <div class="service-name">Calendário Editorial</div>
+        <div class="service-desc">Cada post com objetivo definido. Cada semana com propósito. Planejamento do mês inteiro sem você precisar pensar.</div>
+      </div>
+      <div class="service-card animate delay-1">
+        <div class="service-icon">✍️</div>
+        <div class="service-name">Copywriting Estratégico</div>
+        <div class="service-desc">Legendas, roteiros e textos que falam diretamente com a sua cliente ideal — com a linguagem certa e o objetivo certo.</div>
+      </div>
+      <div class="service-card animate delay-2">
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Design para Redes Sociais</div>
+        <div class="service-desc">Posts, carrosséis e artes alinhados com a sua identidade visual. Consistência que transmite autoridade.</div>
+      </div>
+      <div class="service-card animate delay-3">
+        <div class="service-icon">📊</div>
+        <div class="service-name">Relatório e Monitoramento</div>
+        <div class="service-desc">Acompanhamento ativo de engajamento, relatório mensal de métricas e ajuste de estratégia sempre que necessário.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PARA QUEM É
+════════════════════════════════════════════ -->
+<section id="para-quem" class="section-light">
+  <div class="container">
+    <div class="for-who-grid">
+      <div class="for-who-left animate">
+        <div class="section-label" style="color:var(--purple)">Para quem é</div>
+        <h2 class="section-title">feito para quem<br>vive de <em>reputação.</em></h2>
+        <p class="section-sub" style="margin-bottom:0">A Veez é especializada em profissionais liberais com negócio próprio. Se você se enquadra abaixo, a gente tem muito a construir juntas.</p>
+
+        <div class="for-who-list">
+          <div class="for-who-item">
+            <div class="for-who-check">✓</div>
+            <div class="for-who-text">
+              <strong>Você é médica, psicóloga, nutricionista, advogada, fisioterapeuta ou dentista</strong>
+              Com atendimentos por agendamento e base de clientes formada.
+            </div>
+          </div>
+          <div class="for-who-item">
+            <div class="for-who-check">✓</div>
+            <div class="for-who-text">
+              <strong>Você tem autoridade real — mas está invisível online</strong>
+              Seu Instagram não representa quem você é de verdade.
+            </div>
+          </div>
+          <div class="for-who-item">
+            <div class="for-who-check">✓</div>
+            <div class="for-who-text">
+              <strong>Você depende quase que exclusivamente de indicações</strong>
+              E sabe que isso limita o controle sobre o crescimento.
+            </div>
+          </div>
+          <div class="for-who-item">
+            <div class="for-who-check">✓</div>
+            <div class="for-who-text">
+              <strong>Você já tentou uma vez e não deu certo</strong>
+              Ou simplesmente não sabe por onde começar.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate delay-2">
+        <div class="profile-card">
+          <div class="profile-card-header">
+            <div class="profile-card-name">Perfil da nossa cliente</div>
+            <div class="profile-card-title">Dra. Rafaela —<br>especialista que ninguém<br>está vendo online.</div>
+          </div>
+          <div class="profile-card-body">
+            <div class="profile-pain">
+              <div class="profile-pain-dot"></div>
+              <div class="profile-pain-text">"Tem muita coisa errada no meu Instagram, mas não sei por onde começar."</div>
+            </div>
+            <div class="profile-pain">
+              <div class="profile-pain-dot"></div>
+              <div class="profile-pain-text">"Estou ficando invisível enquanto concorrentes crescem."</div>
+            </div>
+            <div class="profile-pain">
+              <div class="profile-pain-dot"></div>
+              <div class="profile-pain-text">"Dependo só de indicação. Não tenho controle sobre o crescimento."</div>
+            </div>
+            <div class="profile-pain">
+              <div class="profile-pain-dot"></div>
+              <div class="profile-pain-text">"Meu Instagram não reflete quem eu realmente sou."</div>
+            </div>
+            <div class="profile-pain">
+              <div class="profile-pain-dot"></div>
+              <div class="profile-pain-text">"Já tentei uma vez e não deu certo."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PROCESSO
+════════════════════════════════════════════ -->
+<section id="processo" class="section-gray">
+  <div class="container">
+    <div class="section-header centered animate">
+      <div class="section-label" style="color:var(--pink)">O nosso método</div>
+      <h2 class="section-title">estratégia antes de<br>qualquer <em>publicação.</em></h2>
+      <p class="section-sub">Cada etapa tem um propósito. Nada é criado antes de entender quem você é, para quem você fala e o que te diferencia.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step animate delay-1">
+        <div class="step-dot">📋</div>
+        <div class="step-num">01</div>
+        <div class="step-title">Briefing</div>
+        <div class="step-desc">Entendemos o negócio, os objetivos e o contexto antes de qualquer estratégia.</div>
+      </div>
+      <div class="process-step animate delay-2">
+        <div class="step-dot">🔍</div>
+        <div class="step-num">02</div>
+        <div class="step-title">Diagnóstico</div>
+        <div class="step-desc">Análise completa do perfil atual, oportunidades e pontos de melhoria.</div>
+      </div>
+      <div class="process-step animate delay-3">
+        <div class="step-dot">✦</div>
+        <div class="step-num">03</div>
+        <div class="step-title">Branding</div>
+        <div class="step-desc">Identidade, tom de voz e posicionamento definidos e aprovados por você.</div>
+      </div>
+      <div class="process-step animate delay-4">
+        <div class="step-dot">👤</div>
+        <div class="step-num">04</div>
+        <div class="step-title">Persona</div>
+        <div class="step-desc">Mapeamento do cliente ideal — quem ela é, o que sente e o que procura.</div>
+      </div>
+      <div class="process-step animate delay-1">
+        <div class="step-dot">🧭</div>
+        <div class="step-num">05</div>
+        <div class="step-title">Estratégia</div>
+        <div class="step-desc">Calendário editorial com objetivo em cada publicação. Nada é aleatório.</div>
+      </div>
+      <div class="process-step animate delay-2">
+        <div class="step-dot">✍️</div>
+        <div class="step-num">06</div>
+        <div class="step-title">Produção</div>
+        <div class="step-desc">Criação de conteúdo — texto, design, roteiros e edição de vídeo.</div>
+      </div>
+      <div class="process-step animate delay-3">
+        <div class="step-dot">✅</div>
+        <div class="step-num">07</div>
+        <div class="step-title">Aprovação</div>
+        <div class="step-desc">Tudo passa pela sua aprovação antes de ir para o ar.</div>
+      </div>
+      <div class="process-step animate delay-4">
+        <div class="step-dot">📊</div>
+        <div class="step-num">08</div>
+        <div class="step-title">Monitoramento</div>
+        <div class="step-desc">Publicação com acompanhamento ativo. O trabalho não termina no post.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     PACOTES
+════════════════════════════════════════════ -->
+<section id="pacotes" class="section-light">
+  <div class="container">
+    <div class="section-header centered animate">
+      <div class="section-label" style="color:var(--pink)">Investimento</div>
+      <h2 class="section-title">escolha o<br><em>seu ritmo.</em></h2>
+      <p class="section-sub">Todos os pacotes incluem a estrutura completa de posicionamento — não apenas gestão operacional de posts.</p>
+    </div>
+
+    <div class="pricing-grid animate delay-1">
+
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <div class="pkg-badge">Essencial</div>
+          <div class="pkg-name">Base</div>
+          <div class="pkg-price">R$ 900</div>
+          <div class="pkg-period">/mês · contrato de 3 meses</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-features">
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> 2 posts por semana</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Diagnóstico estratégico</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Branding e posicionamento</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Calendário editorial</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Central no Notion</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Relatório mensal</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Grupo exclusivo no WhatsApp</div>
+          </div>
+          <button class="pkg-cta" onclick="window.open('https://wa.me/55XXXXXXXXXXX?text=Olá!%20Tenho%20interesse%20no%20pacote%20Essencial%20da%20Veez.','_blank')">Quero este pacote →</button>
+        </div>
+      </div>
+
+      <div class="pkg-card featured">
+        <div class="pkg-top">
+          <div class="pkg-badge">✦ Mais escolhido</div>
+          <div class="pkg-name">Estratégico</div>
+          <div class="pkg-price">R$ 1.200</div>
+          <div class="pkg-period">/mês · contrato de 3 meses</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-features">
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> 3 posts por semana</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> 1 Reel por mês</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Diagnóstico estratégico</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Branding e posicionamento</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Calendário editorial</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Central no Notion</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Relatório mensal</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Grupo exclusivo no WhatsApp</div>
+          </div>
+          <button class="pkg-cta" onclick="window.open('https://wa.me/55XXXXXXXXXXX?text=Olá!%20Tenho%20interesse%20no%20pacote%20Estratégico%20da%20Veez.','_blank')">Quero este pacote →</button>
+        </div>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <div class="pkg-badge">Autoridade</div>
+          <div class="pkg-name">Premium</div>
+          <div class="pkg-price">R$ 1.800</div>
+          <div class="pkg-period">/mês · contrato de 3 meses</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-features">
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> 3 posts por semana</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> 2 Reels por mês</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Orientação de Stories</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Diagnóstico estratégico</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Branding e posicionamento</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Central no Notion</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Relatório mensal</div>
+            <div class="pkg-feature"><span class="pkg-feature-dot">✓</span> Grupo exclusivo no WhatsApp</div>
+          </div>
+          <button class="pkg-cta" onclick="window.open('https://wa.me/55XXXXXXXXXXX?text=Olá!%20Tenho%20interesse%20no%20pacote%20Autoridade%20da%20Veez.','_blank')">Quero este pacote →</button>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="setup-note animate">
+      <strong>Taxa de setup única: R$ 500 a R$ 800</strong><br>
+      Cobre diagnóstico, branding, estruturação do perfil e base estratégica completa. Cobrada uma única vez no início do contrato.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════ -->
+<section id="faq" class="section-gray">
+  <div class="container">
+    <div class="section-header centered animate">
+      <div class="section-label" style="color:var(--purple)">Dúvidas frequentes</div>
+      <h2 class="section-title">perguntas que<br>você provavelmente <em>tem.</em></h2>
+    </div>
+
+    <div class="faq-list animate">
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Quanto tempo demora para ver resultados?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Os primeiros 30 dias são de estruturação — diagnóstico, branding, estratégia e primeiros posts. Resultados de engajamento começam a aparecer entre o 1º e o 2º mês. Crescimento consistente e geração de leads via Instagram acontece a partir do 2º e 3º mês, com estratégia aplicada de forma continuada.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Como funciona a aprovação dos conteúdos?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Todo conteúdo passa pela sua aprovação antes de publicar. Você recebe os posts com antecedência via central no Notion — com legenda, arte e agendamento sugerido. Você aprova, sugere ajustes ou libera diretamente de lá.<br><br>
+            Além disso, cada cliente tem um <strong>grupo exclusivo no WhatsApp</strong> com a Veez — para contato direto, suporte, dúvidas rápidas e alinhamentos no dia a dia. Sem intermediários, sem fila de atendimento.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Preciso aparecer no conteúdo?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Não é obrigatório, mas aparições estratégicas fazem diferença. A gente define juntas qual é o seu nível de conforto com câmera — e a estratégia é montada a partir disso. É possível construir autoridade com conteúdo de texto, design e narração em off nos Reels.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">A Veez faz tráfego pago (anúncios)?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Por enquanto, não. Nosso foco é construir uma presença orgânica sólida primeiro. Um perfil bem posicionado organicamente performa muito melhor quando os anúncios entram. Tráfego pago está previsto para o futuro.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">O que acontece se eu não gostar do conteúdo?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Revisões fazem parte do processo. Antes de produzir qualquer conteúdo, fazemos um trabalho detalhado de briefing e alinhamento de tom e estilo. Se algo não ficou como esperado, ajustamos. O objetivo é que o conteúdo soe como você — não como nós.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Qual a diferença da Veez para uma agência comum?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Agências comuns entregam posts. A Veez entrega posicionamento. Começamos pelo negócio — não pelo conteúdo. Somos especializadas em profissionais liberais, o que significa que conhecemos as especificidades do seu mercado, do seu cliente e da linguagem que funciona para a sua área. Além disso, toda a estratégia é visível para você via Notion em tempo real.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Posso cancelar antes dos 3 meses?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            O contrato inicial é de 3 meses — esse é o tempo mínimo necessário para estruturar, aplicar e medir resultados. Não faz sentido estratégico e não é honesto prometer resultados em menos tempo. Depois dos 3 meses, você decide se renova ou encerra.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Meu Instagram está abandonado. Dá pra começar assim mesmo?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Sim — e muitas vezes é mais fácil começar do zero do que reformar um perfil pela metade. O diagnóstico inclui análise do que existe, aproveitamento do que funciona e reestruturação do que precisa mudar. O ponto de partida não importa — importa para onde você quer ir.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span class="faq-question">Como acompanho o trabalho sendo feito?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Via central no Notion — acessível a qualquer momento, no celular ou computador. Você vê a estratégia definida, o calendário do mês, os posts em aprovação, o status de publicação e o relatório de métricas. Nada de caixa preta. Transparência total.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════ -->
+<section id="contato">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-label cta-label animate">Próximo passo</div>
+    <h2 class="cta-title animate delay-1">
+      pronta para ser<br><em>encontrada?</em>
+    </h2>
+    <p class="cta-sub animate delay-2">
+      Comece com um diagnóstico gratuito. Sem compromisso. A gente analisa o seu perfil e te mostra exatamente o que está travando o seu crescimento.
+    </p>
+    <div class="cta-actions animate delay-3">
+      <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20saber%20mais%20sobre%20a%20Veez%20e%20meu%20diagnóstico%20gratuito." target="_blank" class="btn btn-pink btn-lg">
+        Quero meu diagnóstico gratuito →
+      </a>
+    </div>
+    <p class="cta-note animate delay-4">Vagas limitadas por mês · Sem compromisso na primeira conversa</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo"><span class="dot">·</span>veez</div>
+      <div class="footer-links">
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#pacotes">Pacotes</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-copy">© 2026 Veez · Todos os direitos reservados</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script>
+  /* ─── Sticky Nav ──────────────────────────── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ─── Scroll animations ───────────────────── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+  /* ─── FAQ accordion ───────────────────────── */
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item    = trigger.parentElement;
+      const answer  = item.querySelector('.faq-answer');
+      const isOpen  = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ─── Smooth scroll nav ───────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+<!-- ════════════════════════════════════════════
+     WHATSAPP FLOATING BUTTON
+════════════════════════════════════════════ -->
+<a
+  href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Vim%20pelo%20site%20da%20Veez%20e%20quero%20saber%20mais."
+  target="_blank"
+  class="wa-float"
+  aria-label="Falar no WhatsApp"
+>
+  <span class="wa-tooltip">Falar com a Veez 👋</span>
+  <div class="wa-btn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </div>
+</a>
+
+</body>
+</html>
